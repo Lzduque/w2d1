@@ -10,9 +10,10 @@ function getHTML (options, callback) {
     response.on('data', function (data) {
       dataReceived += data;
       console.log('Data Received: ', dataReceived);
+      callback(data);
     });
     response.on('end', function() {
-      return callback;
+      console.log('End of request!');
     });
   });
 };
