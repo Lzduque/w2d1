@@ -23,6 +23,8 @@ getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Result:", result);
 });
 
+// test
+
 // https://api.github.com/repos/jquery/jquery/contributors
 
-// curl -i -H 'Authorization: token 7115e5bc854beaaffe3f9f778ff3a90d693534a5' https://api.github.com/repos/jquery/jquery/contributors
+// curl -i -H 'Authorization: token XXXXX' https://api.github.com/repos/jquery/jquery/contributors
