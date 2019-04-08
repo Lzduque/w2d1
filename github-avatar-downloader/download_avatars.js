@@ -37,7 +37,7 @@ function getRepoContributors(repoOwner, repoName, callback) {
     // console.log('');
 
     data.forEach(function(element) {
-      console.log(element.avatar_url);
+      downloadImageByURL(element.avatar_url, 'avatar/' + element.login + '.jpg');
     });
 
     function downloadImageByURL(url, filePath) {
@@ -49,6 +49,8 @@ function getRepoContributors(repoOwner, repoName, callback) {
       .pipe(fs.createWriteStream(filePath));
 
     }
+
+
 
   });
 }
