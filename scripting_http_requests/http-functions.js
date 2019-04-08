@@ -25,4 +25,4 @@ function printHTML (html) {
 module.exports = {
   getHTML,
   printHTML
-}
+} // if you need to export more then one function, you need to export it as an object, otherwise, if you call module.exports lots of times, you are just substituting one variable with the other!!
