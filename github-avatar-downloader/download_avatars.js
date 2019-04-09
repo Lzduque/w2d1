@@ -2,11 +2,12 @@ var request = require('request');
 var secrets = require('./secrets');
 var fs = require('fs');
 
+// pick the parameters from the terminal
 var query = process.argv.slice(2);
-// console.log(query);
 
 console.log('Welcome to the GitHub Avatar Downloader!');
 
+// main function
 function getRepoContributors(repoOwner, repoName, callback) {
 
   var options = {
@@ -17,16 +18,20 @@ function getRepoContributors(repoOwner, repoName, callback) {
     }
   };
 
+  // calling the data from the web
   request(options, function (error, response, body) {
 
     callback(error, body);
 
+    // put all the data in an array
     var data = JSON.parse(body);
 
+    // going through each element of the array and selecting each url
     data.forEach(function(element) {
       downloadImageByURL(element.avatar_url, 'avatar/' + element.login + '.jpg');
     });
 
+    //get the image and saving it
     function downloadImageByURL(url, filePath) {
       request.get(url)
       .on('error', function (err) {
@@ -42,8 +47,6 @@ getRepoContributors(query[0], query[1], function(err, result) {
     console.log('repoOwner or repoName is undefined! Please eneter a parameter!');
     throw error;
   }
-  // console.log("Errors:", err);
-  // console.log("Result:", result);
 });
 
 // https://api.github.com/repos/jquery/jquery/contributors
