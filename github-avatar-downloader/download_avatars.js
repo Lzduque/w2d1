@@ -34,11 +34,14 @@ function getRepoContributors(repoOwner, repoName, callback) {
       })
       .pipe(fs.createWriteStream(filePath));
     }
-
   });
 }
 
 getRepoContributors(query[0], query[1], function(err, result) {
+  if (query[0] === undefined || query[1] === undefined) {
+    console.log('repoOwner or repoName is undefined! Please eneter a parameter!');
+    throw error;
+  }
   // console.log("Errors:", err);
   // console.log("Result:", result);
 });
