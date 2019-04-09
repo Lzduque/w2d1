@@ -26,7 +26,7 @@ function getRepoContributors(repoOwner, repoName, callback) {
     // put all the data in an array
     var data = JSON.parse(body);
 
-    // going through each element of the array and selecting each url and choosing the name of the file
+    // going through each element of the array and selecting each url and choosing the name of the file (filePath)
     data.forEach(function(element) {
       downloadImageByURL(element.avatar_url, 'avatar/' + element.login + '.jpg');
     });
