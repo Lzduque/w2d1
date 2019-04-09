@@ -10,7 +10,6 @@ function downloadImageByURL(url, filePath) {
   })
   .pipe(fs.createWriteStream(filePath));
 
-
 }
 
 
