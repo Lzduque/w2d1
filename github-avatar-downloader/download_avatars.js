@@ -26,7 +26,7 @@ function getRepoContributors(repoOwner, repoName, callback) {
     // put all the data in an array
     var data = JSON.parse(body);
 
-    // going through each element of the array and selecting each url
+    // going through each element of the array and selecting each url and choosing the name of the file
     data.forEach(function(element) {
       downloadImageByURL(element.avatar_url, 'avatar/' + element.login + '.jpg');
     });
@@ -42,9 +42,10 @@ function getRepoContributors(repoOwner, repoName, callback) {
   });
 }
 
+//
 getRepoContributors(query[0], query[1], function(err, result) {
-  if (query[0] === undefined || query[1] === undefined) {
-    console.log('repoOwner or repoName is undefined! Please eneter a parameter!');
+  if (query.length === 0) {
+    console.log('repoOwner or repoName is undefined! Please eneter a parameter!\nrepoOwner and repoName: ', query);
     throw error;
   }
 });
